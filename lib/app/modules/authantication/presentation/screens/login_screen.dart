@@ -136,14 +136,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   phone: phoneController.text,
                                   password: passwordController.text,
                                 ),
-                                onSuccess: () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => const HomeScreen(),
-                                    ),
-                                  );
-                                },
+                               
                               );
                             }
                           },

@@ -1,6 +1,8 @@
 import 'package:clean_architecture_example_app/app/core/services/network_service/api_service.dart';
 import 'package:clean_architecture_example_app/app/core/services/network_service/routes/api_routes.dart';
 import 'package:clean_architecture_example_app/app/core/services/registry_service/di.dart';
+import 'package:clean_architecture_example_app/app/core/services/routing_service/app_routes.dart';
+import 'package:clean_architecture_example_app/app/core/services/routing_service/named_routes.dart';
 import 'package:clean_architecture_example_app/app/core/utils/buffers.dart';
 import 'package:clean_architecture_example_app/app/modules/authantication/data/dto/login_dto.dart';
 import 'package:clean_architecture_example_app/app/modules/authantication/data/source/auth_imple_repo.dart';
@@ -20,12 +22,12 @@ class AuthProvider extends ChangeNotifier with Buffers {
 
   LoginDto? loginDto;
 
-  Future<void> login(LoginEntity entity, {Function? onSuccess}) async {
+  Future<void> login(LoginEntity entity) async {
     await executeAPI(
       apiEndPoint: ApiRoutes.login,
       onExecute: () async {
         loginDto = await _loginUsecase.execute(entity);
-        onSuccess?.call();
+        AppRouterGo.pushReplacement(homeScreen);
       },
     );
   }

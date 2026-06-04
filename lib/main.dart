@@ -1,7 +1,7 @@
 import 'package:clean_architecture_example_app/app/core/services/registry_service/di.dart';
+import 'package:clean_architecture_example_app/app/core/services/routing_service/named_routes.dart';
 import 'package:clean_architecture_example_app/app/core/theme/app_theme.dart';
 import 'package:clean_architecture_example_app/app/core/utils/app_snack_bar.dart';
-import 'package:clean_architecture_example_app/app/modules/authantication/presentation/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -29,15 +29,13 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
+        return MaterialApp.router(
           debugShowCheckedModeBanner: false,
-          title: 'Clean Architecture Example App',
-          navigatorKey: Prompt.navigatorKey,
-          scaffoldMessengerKey: Prompt.messengerKey,
+          title: 'Clean Architecture Example App', 
           darkTheme: AppTheme.lightTheme,
-
+          routerConfig: AppRouterGo.appRouter,
           theme: AppTheme.lightTheme,
-          home: LoginScreen(),
+          
         );
       },
     );
