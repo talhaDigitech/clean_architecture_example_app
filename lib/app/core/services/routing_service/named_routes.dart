@@ -3,6 +3,7 @@ import 'package:clean_architecture_example_app/app/core/services/routing_service
 // import 'package:clean_architecture_example_app/app/modules/authantication/presentation/screens/login_screen.dart';
 import 'package:clean_architecture_example_app/app/modules/countries/presentation/screen/country_currency_screen.dart';
 import 'package:clean_architecture_example_app/app/modules/home/presentation/screens/home_screen.dart';
+import 'package:clean_architecture_example_app/app/modules/popular_animes/presentation/screen/popular_anime_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,7 +18,7 @@ class AppRouterGo {
       GoRoute(
         path: loginScreen,
         builder: (context, state) {
-          return const CountryCurrencyScreen();
+          return const PopularAnimeScreen();
         },
       ),
 
