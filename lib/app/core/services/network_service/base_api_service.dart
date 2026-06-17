@@ -4,6 +4,13 @@ import 'package:clean_architecture_example_app/app/core/services/network_service
 
 
 abstract class BaseApiService {
+
+  // for graphql api
+  Future requestGraphQL({
+    required String baseUrl,
+    required String query,
+    Map<String, String>? headers,
+  });
   Future requestGET(
       {required ApiRouteEntity apiRoute,
       required Map<String, String>? headers});

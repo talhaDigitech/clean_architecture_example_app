@@ -14,7 +14,6 @@ import 'package:mime/mime.dart';
 
 // ignore: depend_on_referenced_packages
 
-
 class ApiService with ResponseHandlersMixin implements BaseApiService {
   final _http = RetryClient(locator<Client>());
 
@@ -31,10 +30,7 @@ class ApiService with ResponseHandlersMixin implements BaseApiService {
         "\n***Headers: $headers",
       );
 
-      Response response = await _http.get(
-        Uri.parse(route),
-        headers: headers,
-      );
+      Response response = await _http.get(Uri.parse(route), headers: headers);
 
       appLog("\n\n***RAW RESPONSE*** ${response.body} ***\n\n");
       var result = filterResponse(response);
@@ -165,10 +161,7 @@ class ApiService with ResponseHandlersMixin implements BaseApiService {
   }) async {
     try {
       String route = "${apiRoute.base}${apiRoute.endpoint}";
-      var request = MultipartRequest(
-        'POST',
-        Uri.parse(route),
-      );
+      var request = MultipartRequest('POST', Uri.parse(route));
       if (data != null) {
         request.fields.addAll(data);
       }
@@ -204,7 +197,8 @@ class ApiService with ResponseHandlersMixin implements BaseApiService {
       request.headers.addAll(headers);
       appLog('REQUEST FILENAME: ${request.files.first.filename}');
       appLog(
-          'REQUEST FILE CONTENT TYPE: ${request.files.first.contentType.type}');
+        'REQUEST FILE CONTENT TYPE: ${request.files.first.contentType.type}',
+      );
       appLog('REQUEST FILE FIELDS: ${request.files.first.field}');
       appLog('REQUEST FIELDS: ${request.fields}');
       StreamedResponse response = await _http.send(request);
@@ -228,10 +222,7 @@ class ApiService with ResponseHandlersMixin implements BaseApiService {
   }) async {
     try {
       String route = "${apiRoute.base}${apiRoute.endpoint}";
-      var request = MultipartRequest(
-        'PUT',
-        Uri.parse(route),
-      );
+      var request = MultipartRequest('PUT', Uri.parse(route));
       if (data != null) {
         request.fields.addAll(data);
       }
@@ -267,7 +258,8 @@ class ApiService with ResponseHandlersMixin implements BaseApiService {
       request.headers.addAll(headers);
       appLog('REQUEST FILENAME: ${request.files.first.filename}');
       appLog(
-          'REQUEST FILE CONTENT TYPE: ${request.files.first.contentType.type}');
+        'REQUEST FILE CONTENT TYPE: ${request.files.first.contentType.type}',
+      );
       appLog('REQUEST FILE FIELDS: ${request.files.first.field}');
       appLog('REQUEST FIELDS: ${request.fields}');
       StreamedResponse response = await _http.send(request);
@@ -278,6 +270,42 @@ class ApiService with ResponseHandlersMixin implements BaseApiService {
       throw NoInternetException();
     } catch (e, stackTrace) {
       appPrint('[StackTrace]: $stackTrace');
+      rethrow;
+    }
+  }
+
+  @override
+  Future<dynamic> requestGraphQL({
+    required String baseUrl,
+    required String query,
+    Map<String, String>? headers,
+  }) async {
+    try {
+      appLog(
+        "\n***REQUESTING GraphQL***: @$baseUrl "
+        "\n***Query: $query"
+        "\n***Headers: $headers",
+      );
+
+      final body = jsonEncode({'query': query});
+
+      Response response = await _http.post(
+        Uri.parse(baseUrl),
+        headers: headers,
+        body: body,
+      );
+
+      appLog("\n\n***RAW RESPONSE*** ${response.body} ***\n\n");
+      var result = filterResponse(response);
+
+      appPrint("\n\n***FILTERED RESULT*** $result\n\n");
+      return result;
+    } on SocketException {
+      throw NoInternetException();
+    } on ClientException {
+      throw NoInternetException();
+    } catch (e) {
+      appPrint("ApiClient e: $e");
       rethrow;
     }
   }

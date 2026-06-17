@@ -3,6 +3,7 @@ import 'package:clean_architecture_example_app/app/core/services/network_service
 import 'package:clean_architecture_example_app/app/core/services/secure_storage.dart';
 import 'package:clean_architecture_example_app/app/core/utils/app_logger.dart';
 import 'package:clean_architecture_example_app/app/modules/authantication/data/source/auth_imple_repo.dart';
+import 'package:clean_architecture_example_app/app/modules/countries/data/source/country_repo_imply.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
@@ -28,6 +29,9 @@ void setupLocator() {
 
   locator.registerFactory<AuthImpleRepo>(
     () => AuthImpleRepo(locator<ApiService>()),
+  );
+   locator.registerFactory<CountryRepoImply>(
+    () => CountryRepoImply(locator<ApiService>()),
   );
  
 }
