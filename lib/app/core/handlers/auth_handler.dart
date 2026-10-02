@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 
 
 class AuthHandler extends ChangeNotifier {
+  static AuthHandler get ref => locator<AuthHandler>();
+
   User? user;
   String? acessToken;
   bool didLogOut = false;

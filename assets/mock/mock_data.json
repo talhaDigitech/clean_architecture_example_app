@@ -1,0 +1,285 @@
+{
+  "user": {
+    "userName": "Muhammad Ali",
+    "email": "m.ali@digital360.pk",
+    "phone": "+92 300 1234567"
+  },
+  "meters": [
+    {
+      "meterId": "WM-2026-8849",
+      "meterName": "Main Residence Water Meter",
+      "meterType": "Smart Water Meter",
+      "deviceUserName": "Muhammad Ali",
+      "feeStatus": 0,
+      "valveStatus": 0,
+      "voltageStatus": 0,
+      "reportReason": "Periodic Transmission OK",
+      "deviceTotalData": 1482.35,
+      "deviceBalance": 4850.00,
+      "deviceLastData": 1448.25,
+      "deviceSettleDayData": 34.10,
+      "deviceCurrentData": 1.85,
+      "deviceSettleDay": "25th of month",
+      "deviceVoltage": 3.65,
+      "deviceRSSI": -74,
+      "deviceClock": "2026-09-30 15:30",
+      "deviceAddress": "Sector F-7/2, Street 14, Villa 42, Islamabad",
+      "deviceBuyTimes": 9,
+      "updateTime": "2026-09-30T15:30:00",
+      "weeklyUsage": [
+        { "day": "Thu", "value": 1.45, "isSelected": false },
+        { "day": "Fri", "value": 2.10, "isSelected": false },
+        { "day": "Sat", "value": 2.85, "isSelected": false },
+        { "day": "Sun", "value": 3.20, "isSelected": false },
+        { "day": "Mon", "value": 1.95, "isSelected": false },
+        { "day": "Tue", "value": 1.60, "isSelected": false },
+        { "day": "Today", "value": 1.85, "isSelected": true }
+      ]
+    },
+    {
+      "meterId": "WM-2026-1042",
+      "meterName": "Lawn & Garden Water Meter",
+      "meterType": "Domestic Water Sub-Meter",
+      "deviceUserName": "Muhammad Ali",
+      "feeStatus": 1,
+      "valveStatus": 1,
+      "voltageStatus": 1,
+      "reportReason": "Valve Closed by System",
+      "deviceTotalData": 3820.60,
+      "deviceBalance": 120.00,
+      "deviceLastData": 3750.00,
+      "deviceSettleDayData": 70.60,
+      "deviceCurrentData": 0.15,
+      "deviceSettleDay": "1st of month",
+      "deviceVoltage": 3.15,
+      "deviceRSSI": -88,
+      "deviceClock": "2026-09-30 14:15",
+      "deviceAddress": "Sector F-7/2, Garden Line, Islamabad",
+      "deviceBuyTimes": 5,
+      "updateTime": "2026-09-29T10:00:00",
+      "weeklyUsage": [
+        { "day": "Thu", "value": 12.5, "isSelected": false },
+        { "day": "Fri", "value": 14.2, "isSelected": false },
+        { "day": "Sat", "value": 4.1, "isSelected": false },
+        { "day": "Sun", "value": 3.5, "isSelected": false },
+        { "day": "Mon", "value": 11.8, "isSelected": false },
+        { "day": "Tue", "value": 13.0, "isSelected": false },
+        { "day": "Today", "value": 0.15, "isSelected": true }
+      ]
+    },
+    {
+      "meterId": "WM-2026-5591",
+      "meterName": "Upper Floor Water Meter",
+      "meterType": "Residential Water Meter",
+      "deviceUserName": "Muhammad Ali",
+      "feeStatus": 0,
+      "valveStatus": 0,
+      "voltageStatus": 0,
+      "reportReason": "Normal Operation",
+      "deviceTotalData": 642.10,
+      "deviceBalance": 2400.00,
+      "deviceLastData": 615.00,
+      "deviceSettleDayData": 27.10,
+      "deviceCurrentData": 0.95,
+      "deviceSettleDay": "15th of month",
+      "deviceVoltage": 3.70,
+      "deviceRSSI": -68,
+      "deviceClock": "2026-09-30 15:28",
+      "deviceAddress": "Sector F-7/2, Upper Portion, Islamabad",
+      "deviceBuyTimes": 12,
+      "updateTime": "2026-09-30T15:28:00",
+      "weeklyUsage": [
+        { "day": "Thu", "value": 0.8, "isSelected": false },
+        { "day": "Fri", "value": 1.1, "isSelected": false },
+        { "day": "Sat", "value": 1.5, "isSelected": false },
+        { "day": "Sun", "value": 1.4, "isSelected": false },
+        { "day": "Mon", "value": 0.9, "isSelected": false },
+        { "day": "Tue", "value": 0.85, "isSelected": false },
+        { "day": "Today", "value": 0.95, "isSelected": true }
+      ]
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1",
+      "title": "Water Leakage Notice",
+      "message": "Abnormal continuous flow detected on Lawn & Garden Meter (WM-2026-1042). Valve status: Leakage.",
+      "category": "alarms",
+      "severity": "danger",
+      "isRead": false,
+      "meterId": "WM-2026-1042",
+      "timestamp": "2026-09-30T15:12:00"
+    },
+    {
+      "id": "notif-2",
+      "title": "Low Balance Alarm",
+      "message": "Your meter account balance is below Rs. 200. Please recharge to ensure uninterrupted water supply.",
+      "category": "billing",
+      "severity": "warning",
+      "isRead": false,
+      "meterId": "WM-2026-1042",
+      "timestamp": "2026-09-30T13:30:00"
+    },
+    {
+      "id": "notif-3",
+      "title": "Monthly Settle Day Notice",
+      "message": "Billing cycle settlement scheduled for 25th of this month. Previous cycle consumption: 34.10 m3.",
+      "category": "billing",
+      "severity": "info",
+      "isRead": false,
+      "meterId": "WM-2026-8849",
+      "timestamp": "2026-09-30T10:30:00"
+    },
+    {
+      "id": "notif-4",
+      "title": "Telemetry Sync Completed",
+      "message": "Winmeter Cloud Gateway successfully received daily reporting cycle from Main Residence Meter.",
+      "category": "system",
+      "severity": "success",
+      "isRead": true,
+      "meterId": "WM-2026-8849",
+      "timestamp": "2026-09-30T03:30:00"
+    },
+    {
+      "id": "notif-5",
+      "title": "Valve Action Logged",
+      "message": "Water supply valve was remotely operated by system for safety verification.",
+      "category": "alarms",
+      "severity": "info",
+      "isRead": true,
+      "meterId": "WM-2026-8849",
+      "timestamp": "2026-09-29T15:30:00"
+    },
+    {
+      "id": "notif-6",
+      "title": "System Firmware Up to Date",
+      "message": "NB-IoT gateway communication protocol is synchronized with Winmeter API v2.4.",
+      "category": "system",
+      "severity": "info",
+      "isRead": true,
+      "meterId": null,
+      "timestamp": "2026-09-28T15:30:00"
+    }
+  ],
+  "recharge_history": [
+    {
+      "transactionId": "TXN-984021",
+      "date": "2026-09-26T10:00:00",
+      "amount": 1000.0,
+      "method": "jazzCash",
+      "status": "success",
+      "meterId": "WM-2026-8849"
+    },
+    {
+      "transactionId": "TXN-973120",
+      "date": "2026-09-12T10:00:00",
+      "amount": 2500.0,
+      "method": "card",
+      "status": "success",
+      "meterId": "WM-2026-8849"
+    },
+    {
+      "transactionId": "TXN-941852",
+      "date": "2026-08-16T10:00:00",
+      "amount": 1500.0,
+      "method": "easypaisa",
+      "status": "success",
+      "meterId": "WM-2026-8849"
+    }
+  ],
+  "usage_records": [
+    {
+      "id": "rec-1",
+      "deviceClock": "2026-09-30 15:30:00",
+      "deviceTotalData": 1482.35,
+      "consumption": 0.25,
+      "deviceBalance": 4850.00,
+      "reportReason": "Normal Periodic Report",
+      "isAlarm": false,
+      "hasDataGapNotice": false
+    },
+    {
+      "id": "rec-2",
+      "deviceClock": "2026-09-30 11:30:00",
+      "deviceTotalData": 1482.10,
+      "consumption": 0.50,
+      "deviceBalance": 4875.00,
+      "reportReason": "Leakage Alarm",
+      "isAlarm": true,
+      "hasDataGapNotice": false
+    },
+    {
+      "id": "rec-3",
+      "deviceClock": "2026-09-30 08:00:00",
+      "deviceTotalData": 1481.60,
+      "consumption": 0.65,
+      "deviceBalance": 4940.00,
+      "reportReason": "Valve Action",
+      "isAlarm": false,
+      "hasDataGapNotice": false
+    },
+    {
+      "id": "rec-4",
+      "deviceClock": "2026-09-29 20:00:00",
+      "deviceTotalData": 1480.95,
+      "consumption": 0.45,
+      "deviceBalance": 4985.00,
+      "reportReason": "Normal Periodic Report",
+      "isAlarm": false,
+      "hasDataGapNotice": true
+    },
+    {
+      "id": "rec-5",
+      "deviceClock": "2026-09-28 12:00:00",
+      "deviceTotalData": 1480.50,
+      "consumption": 0.80,
+      "deviceBalance": 5065.00,
+      "reportReason": "Low Battery Alarm",
+      "isAlarm": true,
+      "hasDataGapNotice": false
+    },
+    {
+      "id": "rec-6",
+      "deviceClock": "2026-09-27 18:30:00",
+      "deviceTotalData": 1479.70,
+      "consumption": 0.70,
+      "deviceBalance": 5135.00,
+      "reportReason": "Arrears Alarm",
+      "isAlarm": true,
+      "hasDataGapNotice": false
+    },
+    {
+      "id": "rec-7",
+      "deviceClock": "2026-09-26 14:00:00",
+      "deviceTotalData": 1479.00,
+      "consumption": 0.90,
+      "deviceBalance": 5225.00,
+      "reportReason": "Magnetic Interference",
+      "isAlarm": true,
+      "hasDataGapNotice": false
+    }
+  ],
+  "usage_chart": {
+    "daily": [
+      { "label": "Thu", "value": 1.45, "date": "2026-09-24" },
+      { "label": "Fri", "value": 2.10, "date": "2026-09-25" },
+      { "label": "Sat", "value": 2.85, "date": "2026-09-26" },
+      { "label": "Sun", "value": 3.20, "date": "2026-09-27" },
+      { "label": "Mon", "value": 1.95, "date": "2026-09-28" },
+      { "label": "Tue", "value": 1.60, "date": "2026-09-29" },
+      { "label": "Today", "value": 1.85, "date": "2026-09-30" }
+    ],
+    "weekly": [
+      { "label": "W1", "value": 14.8, "date": "2026-09-02" },
+      { "label": "W2", "value": 16.2, "date": "2026-09-09" },
+      { "label": "W3", "value": 13.9, "date": "2026-09-16" },
+      { "label": "W4 (Cur)", "value": 15.0, "date": "2026-09-23" }
+    ],
+    "monthly": [
+      { "label": "Jun", "value": 58.4, "date": "2026-06-01" },
+      { "label": "Jul", "value": 64.1, "date": "2026-07-01" },
+      { "label": "Aug", "value": 59.8, "date": "2026-08-01" },
+      { "label": "Sep", "value": 62.3, "date": "2026-09-01" }
+    ]
+  }
+}

@@ -2,7 +2,8 @@ class AppAssets {
   static String googleIcon = "assets/icons/googleIcon.png";
   static String appLoader = 'assets/icons/loading.json';
 
-  static String iconLogo = "assets/logo/icon_logo.png";
+  static String iconLogo = "assets/logo/Winmeter Logo.png";
+  static String winmeterLogo = "assets/logo/Winmeter Logo.png";
   static String naikifyLogo = "assets/logo/naikify-logo.png";
 
   static String google = "assets/icons/googleIcon.png";

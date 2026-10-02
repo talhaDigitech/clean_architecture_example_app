@@ -6,49 +6,49 @@ class AppColors {
   AppColors._();
 
   // Brand Colors - Primary
-  static const Color primary = Color(0xFFE31B54);
-  static const Color primaryLight = Color(0xFFFF4C7C);
-  static const Color primaryDark = Color(0xFFCC1749);
+  static const Color primary = Color(0xFF0E5C8A);
+  static const Color primaryLight = Color(0xFF38BDF8);
+  static const Color primaryDark = Color(0xFF073B59);
 
   // Brand Colors - Secondary
-  static const Color secondary = Color(0xFFFFF0F3);
-  static const Color secondaryGray = Color(0xFFF5F5F5);
-  static const Color secondaryText = Color(0xFF6B7280);
+  static const Color secondary = Color(0xFFF0F9FF);
+  static const Color secondaryGray = Color(0xFFF8FAFC);
+  static const Color secondaryText = Color(0xFF64748B);
 
   // Accent Colors
-  static const Color accent = Color(0xFFFF385C);
-  static const Color accentLight = Color(0xFFFFE4E8);
+  static const Color accent = Color(0xFF0284C7);
+  static const Color accentLight = Color(0xFFE0F2FE);
 
   // Neutral Colors
-  static const Color neutral100 = Color(0xFFF3F4F6);
-  static const Color neutral200 = Color(0xFFE5E7EB);
-  static const Color neutral300 = Color(0xFFD1D5DB);
-  static const Color neutral400 = Color(0xFF9CA3AF);
-  static const Color neutral500 = Color(0xFF6B7280);
-  static const Color neutral600 = Color(0xFF4B5563);
-  static const Color neutral700 = Color(0xFF374151);
-  static const Color neutral800 = Color(0xFF1F2937);
-  static const Color neutral900 = Color(0xFF111827);
+  static const Color neutral100 = Color(0xFFF8FAFC);
+  static const Color neutral200 = Color(0xFFE2E8F0);
+  static const Color neutral300 = Color(0xFFCBD5E1);
+  static const Color neutral400 = Color(0xFF94A3B8);
+  static const Color neutral500 = Color(0xFF64748B);
+  static const Color neutral600 = Color(0xFF475569);
+  static const Color neutral700 = Color(0xFF334155);
+  static const Color neutral800 = Color(0xFF1E293B);
+  static const Color neutral900 = Color(0xFF0F172A);
 
   // Text Colors
-  static const Color textPrimary = Color(0xFF1F2937);
-  static const Color textSecondary = Color(0xFF6B7280);
-  static const Color textTertiary = Color(0xFF9CA3AF);
+  static const Color textPrimary = Color(0xFF0F172A);
+  static const Color textSecondary = Color(0xFF64748B);
+  static const Color textTertiary = Color(0xFF94A3B8);
   static const Color textInverse = Colors.white;
 
   // Background Colors
-  static const Color background = Color(0xFFFFFFFF);
-  static const Color primarybackground = Color.fromARGB(255, 253, 245, 247);
-  static const Color backgroundSecondary = Color(0xFFF9FAFB);
-  static const Color backgroundTertiary = Color(0xFFF3F4F6);
+  static const Color background = Color(0xFFF8FAFC);
+  static const Color primarybackground = Color(0xFFF8FAFC);
+  static const Color backgroundSecondary = Color(0xFFF1F5F9);
+  static const Color backgroundTertiary = Color(0xFFE2E8F0);
   static const Color backgroundPrimary = Color(0xFFFFFFFF);
-  static const Color darkBackground = Color(0xFF111827);
-  static const Color darkbackgroundPrimary = Color(0xFF1F2937);
+  static const Color darkBackground = Color(0xFF0F172A);
+  static const Color darkbackgroundPrimary = Color(0xFF1E293B);
 
   // Border Colors
-  static const Color border = Color(0xFFE5E7EB);
-  static const Color borderSecondary = Color(0xFFD1D5DB);
-  static const Color borderGrey = Color.fromARGB(255, 237, 236, 236);
+  static const Color border = Color(0xFFE2E8F0);
+  static const Color borderSecondary = Color(0xFFCBD5E1);
+  static const Color borderGrey = Color(0xFFE2E8F0);
   static const Color borderFocus = primary;
 
   // Semantic/Status Colors

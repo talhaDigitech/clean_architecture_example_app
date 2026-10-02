@@ -47,7 +47,8 @@ class Prefs {
     try {
       return await read(kAccessToken);
     } catch (e) {
-      throw ('Token not found');
+      appPrint('fetchToken error: $e');
+      return null;
     }
   }
 
@@ -70,9 +71,11 @@ class Prefs {
   Future<User?> fetchUser() async {
     try {
       String? user = await read(_kUser);
-      return User.fromJson(jsonDecode(user!));
+      if (user == null) return null;
+      return User.fromJson(jsonDecode(user));
     } catch (e) {
-      throw ('User not found');
+      appPrint('fetchUser error: $e');
+      return null;
     }
   }
 

@@ -1,15 +1,14 @@
 import 'dart:developer';
-
 import 'package:flutter/foundation.dart';
 
-void appPrint(message) {
+void appPrint(Object? message) {
   if (kDebugMode) {
-    print("[PRINT] [NAKIKIFY-APP] 🎁 => $message");
+    debugPrint("[PRINT] [WINMETER APP] 🔋 => $message");
   }
 }
 
-void appLog(message) {
+void appLog(Object? message) {
   if (kDebugMode) {
-    log("[LOG] [NAKIKIFY-APP] 🎁 => $message");
+    log("[LOG] [WINMETER APP] 🔋 => $message");
   }
 }

@@ -1,12 +1,13 @@
+import 'package:clean_architecture_example_app/app/components/primary_button.dart';
 import 'package:clean_architecture_example_app/app/core/services/network_service/routes/api_routes.dart';
-import 'package:clean_architecture_example_app/app/core/utils/app_formatters.dart';
-import 'package:clean_architecture_example_app/app/core/utils/app_validators.dart';
-import 'package:clean_architecture_example_app/app/modules/authantication/domain/entities/login_entity.dart';
+import 'package:clean_architecture_example_app/app/core/theme/app_typography.dart';
+import 'package:clean_architecture_example_app/app/core/utils/app_assets.dart';
+import 'package:clean_architecture_example_app/app/core/utils/app_strings.dart';
 import 'package:clean_architecture_example_app/app/modules/authantication/presentation/controller/auth_provider.dart';
-import 'package:clean_architecture_example_app/app/modules/home/presentation/screens/home_screen.dart';
+import 'package:clean_architecture_example_app/app/modules/main_nav/presentation/screens/main_navigation_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -16,154 +17,117 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
-
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
-  bool isPasswordVisible = false;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    phoneController.text = '+92';
-  }
-
-  @override
-  void dispose() {
-    phoneController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
-    final authProv = ref.watch(authProvider);
+    final auth = ref.watch(authProvider);
+
     return Scaffold(
+      backgroundColor: const Color(0xFFF8FAFC),
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 80),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 36.h),
+          child: Column(
+            children: [
+              const Spacer(flex: 2),
 
-                const Center(child: Icon(Icons.lock_outline, size: 90)),
-
-                const SizedBox(height: 30),
-
-                const Text(
-                  "Welcome Back",
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                ),
-
-                const SizedBox(height: 8),
-
-                const Text(
-                  "Login to continue",
-                  style: TextStyle(color: Colors.grey, fontSize: 16),
-                ),
-
-                const SizedBox(height: 30),
-
-                /// Phone Field
-                TextFormField(
-                  controller: phoneController,
-                  keyboardType: TextInputType.phone,
-                  textInputAction: TextInputAction.next,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
-                    labelText: "Phone",
-                    hintText: '+923001234567',
-                    prefixIcon: const Icon(Icons.phone),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  validator: (value) => AppValidators.phone(value),
-                  inputFormatters: [AppFormatters.countryPhone("+92", 10)],
-                ),
-
-                const SizedBox(height: 20),
-
-                /// Password Field
-                TextFormField(
-                  controller: passwordController,
-                  obscureText: !isPasswordVisible,
-                  textInputAction: TextInputAction.done,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-
-                  decoration: InputDecoration(
-                    labelText: "Password",
-                    prefixIcon: const Icon(Icons.lock_outline),
-
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        isPasswordVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off,
+              // Winmeter Logo with Hero animation
+              Hero(
+                tag: 'logo',
+                child: Container(
+                  width: 220.w,
+                  height: 90.h,
+                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 14.h),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(22.r),
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color(0xFF0E5C8A).withValues(alpha: 0.08),
+                        blurRadius: 28,
+                        spreadRadius: 2,
+                        offset: const Offset(0, 10),
                       ),
-
-                      onPressed: () {
-                        setState(() {
-                          isPasswordVisible = !isPasswordVisible;
-                        });
-                      },
-                    ),
-
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+                    ],
                   ),
-                  validator: (value) => AppValidators.password(value),
-                ),
-
-                const SizedBox(height: 20),
-
-                SizedBox(
-                  width: double.infinity,
-                  height: 55,
-                  child: ElevatedButton(
-                    onPressed: authProv.hasLoader(ApiRoutes.login)
-                        ? null
-                        : () {
-                            if (_formKey.currentState!.validate()) {
-                              authProv.login(
-                                LoginEntity(
-                                  phone: phoneController.text,
-                                  password: passwordController.text,
-                                ),
-                                onSuccess: () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => const HomeScreen(),
-                                    ),
-                                  );
-                                },
-                              );
-                            }
-                          },
-                    child: authProv.hasLoader(ApiRoutes.login)
-                        ? const CircularProgressIndicator()
-                        : const Text("Login", style: TextStyle(fontSize: 18)),
+                  child: Image.asset(
+                    AppAssets.winmeterLogo,
+                    fit: BoxFit.contain,
                   ),
                 ),
+              ),
 
-                const SizedBox(height: 20),
+              SizedBox(height: 32.h),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text("Don't have an account?"),
-                    TextButton(onPressed: () {}, child: const Text("Sign Up")),
-                  ],
+              Text(
+                'Welcome to Winmeter',
+                style: AppTypography.headlineSmall.copyWith(
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xFF0F172A),
+                  letterSpacing: -0.3,
                 ),
-              ],
-            ),
+                textAlign: TextAlign.center,
+              ),
+
+              SizedBox(height: 12.h),
+
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Text(
+                  'Enterprise Meter Management Platform\nTap below to connect securely to your account',
+                  textAlign: TextAlign.center,
+                  style: AppTypography.bodyMedium.copyWith(
+                    color: const Color(0xFF64748B),
+                    height: 1.5,
+                  ),
+                ),
+              ),
+
+              const Spacer(flex: 3),
+
+              // Single Connect / Sign In button
+              PrimaryButton(
+                buttonText: AppString.signIn,
+                isLoading: auth.hasLoader(ApiRoutes.login),
+                onPressed: () {
+                  ref.read(authProvider).login(
+                    onSuccess: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const MainNavigationScreen(),
+                        ),
+                      );
+                    },
+                  );
+                },
+                buttonWidth: double.infinity,
+                buttonHeight: 52.h,
+                borderRadius: BorderRadius.circular(14.r),
+              ),
+
+              SizedBox(height: 20.h),
+
+              // Security & Version footer
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.shield_outlined,
+                    size: 15.sp,
+                    color: const Color(0xFF94A3B8),
+                  ),
+                  SizedBox(width: 6.w),
+                  Text(
+                    'OAuth 2.0 Secure · Winmeter v1.0.0',
+                    style: AppTypography.bodySmall.copyWith(
+                      color: const Color(0xFF94A3B8),
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 8.h),
+            ],
           ),
         ),
       ),

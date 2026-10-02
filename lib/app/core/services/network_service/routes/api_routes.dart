@@ -5,9 +5,8 @@ class ApiRoutes {
   /// Serving url
   ///
   static String get baseUrl => dotenv.get('BASE_URL');
-  // static String get imageUrl => dotenv.get('Image_URL');
 
-  //authentication
-  static const login = "/auth/login";
-  static const signup = "/auth/register";
+  // Authentication - OAuth2 Client Credentials
+  static const login =
+      "/auth2/oauth/token?grant_type=client_credentials&scope=open";
 }

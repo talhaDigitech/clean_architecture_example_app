@@ -1,10 +1,10 @@
+import 'package:clean_architecture_example_app/app/core/handlers/auth_handler.dart';
 import 'package:clean_architecture_example_app/app/core/services/network_service/api_service.dart';
 import 'package:clean_architecture_example_app/app/core/services/network_service/routes/api_routes.dart';
 import 'package:clean_architecture_example_app/app/core/services/registry_service/di.dart';
 import 'package:clean_architecture_example_app/app/core/utils/buffers.dart';
 import 'package:clean_architecture_example_app/app/modules/authantication/data/dto/login_dto.dart';
 import 'package:clean_architecture_example_app/app/modules/authantication/data/source/auth_imple_repo.dart';
-import 'package:clean_architecture_example_app/app/modules/authantication/domain/entities/login_entity.dart';
 import 'package:clean_architecture_example_app/app/modules/authantication/domain/usecase/login_usecase.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/legacy.dart';
@@ -20,11 +20,16 @@ class AuthProvider extends ChangeNotifier with Buffers {
 
   LoginDto? loginDto;
 
-  Future<void> login(LoginEntity entity, {Function? onSuccess}) async {
+  bool get isLoading => hasLoader(ApiRoutes.login);
+
+  Future<void> login({Function? onSuccess}) async {
     await executeAPI(
       apiEndPoint: ApiRoutes.login,
       onExecute: () async {
-        loginDto = await _loginUsecase.execute(entity);
+        loginDto = await _loginUsecase.execute();
+        if (loginDto?.accessToken != null) {
+          await AuthHandler.ref.storeToken(loginDto?.accessToken, true);
+        }
         onSuccess?.call();
       },
     );
